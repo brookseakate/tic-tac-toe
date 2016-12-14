@@ -11,6 +11,9 @@ var Game = function() {
 Game.prototype.play = function(player, posIndex) {
   if (this.board.grid[posIndex[0]][posIndex[1]] === undefined) {
     this.board.grid[posIndex[0]][posIndex[1]] = player;
+    if (this.board.won()){
+      //Call a function to end the game
+    }
     return true;
   } else {
     return false;

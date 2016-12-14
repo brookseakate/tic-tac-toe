@@ -26,17 +26,30 @@ describe('Game', function() {
       // save original value of position
       var beginValue = game.board.grid[0][2];
 
-      game.play(0, '02');
+      expect(game.play(0, '02')).toEqual(true);
 
       expect(game.board.grid[0][2]).toEqual(0);
       expect(game.board.grid[0][2]).not.toEqual(beginValue);
       expect(game.board.grid[0][2]).toBeDefined();
 
-      game.play(1, '02');
+      expect(game.play(1, '02')).toEqual(false);
 
       expect(game.board.grid[0][2]).toEqual(0);
+
     });
 
-    // @TODO - add more tests for play
+    it('it should be able to check if someone has already won', function(){
+      var game = new Game();
+      //This will break once turn management works
+      game.play(0, '00');
+      game.play(0, '01');
+      game.play(0, '02');
+      expect(game.board.grid[0][2]).toBeDefined();
+      expect(game.board.grid[0][1]).toEqual(0);
+      expect(game.board.grid[0][0]).toEqual(0);
+      expect(game.board.isWon).toEqual(true);
+      expect(game.board.winner).toEqual(0);
+    });
+
   });
 });
