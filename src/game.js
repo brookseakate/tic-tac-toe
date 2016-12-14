@@ -9,6 +9,7 @@ var Game = function() {
   this.playerOne.myTurn = true;
   this.playerTwo = new Player(1);
   this.gameOver = false;
+  this.winner = this.board.winner; //Just in case it needs to be passed in the future
 };
 
 // posIndex will be a string position index, '00' - '22'

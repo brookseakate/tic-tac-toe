@@ -73,6 +73,15 @@ describe('Game', function() {
       expect(game.play(1, '12')).toEqual(false);
       expect(game.board.grid[1][2]).not.toBeDefined();
     });
+    it('will allow a player to play a valid space after trying an invalid space', function(){
+      var game = new Game();
+      game.play(0, '00');
+      expect(game.play(1, '00')).toEqual(false);
+      expect(game.board.grid[0][0]).not.toEqual(1);
+      expect(game.play(1, '01')).toEqual(true);
+      expect(game.board.grid[0][1]).toBeDefined();
+      expect(game.board.grid[0][1]).toEqual(1);
+    });
   });
 
   describe('gameOver', function(){
