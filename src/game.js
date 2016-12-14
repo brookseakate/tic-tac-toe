@@ -8,6 +8,7 @@ var Game = function() {
   this.playerOne = new Player(0);
   this.playerOne.myTurn = true;
   this.playerTwo = new Player(1);
+  this.gameOver = false;
 };
 
 // posIndex will be a string position index, '00' - '22'
@@ -17,8 +18,8 @@ Game.prototype.play = function(playerID, posIndex) {
 
   if ((this.board.grid[posIndex[0]][posIndex[1]] === undefined) && (currentPlayer.idNum == playerID)) {
     this.board.grid[posIndex[0]][posIndex[1]] = playerID;
-    if (this.board.won()){
-      //Call a function to end the game
+    if ((this.board.won()) || (this.board.full())) {
+      this.gameOver = true;
     }
     this.updateTurn();
     return true;

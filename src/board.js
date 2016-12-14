@@ -38,4 +38,15 @@ Board.prototype.won = function(){
     }
   }
 };
+
+Board.prototype.full = function() {
+  var isFull = true;
+  this.grid.forEach(function(subarray) {
+    if (subarray.includes(undefined)) {
+      isFull = false;
+    }
+  });
+  return isFull;
+};
+
 export default Board;

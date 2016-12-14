@@ -44,4 +44,30 @@ describe('Board', function(){
       expect(board.winner).toEqual(0);
     });
   });
+
+  describe('full', function() {
+    it('should return true if the board is filled (no undefined spaces) & no winner', function() {
+      var board = new Board();
+      board.grid = [[1, 0, 1], [0, 0, 1], [0, 1, 0]];
+      expect(board.full()).toEqual(true);
+    });
+
+    it('should return true if the board is filled (no undefined spaces) & there is a winner', function() {
+      var board = new Board();
+      board.grid = [[0, 0, 1], [0, 0, 1], [0, 1, 0]];
+      expect(board.full()).toEqual(true);
+    });
+
+    it('should return false if the board is not filled (has undefined spaces)', function() {
+      var board = new Board();
+      board.grid = [[1, undefined, 0], [1, 0, 1], [1, 1, 0]];
+      expect(board.full()).toEqual(false);
+    });
+
+    it('should return false if the board is all unfilled (all undefined spaces)', function() {
+      var board = new Board();
+      board.grid = [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]];
+      expect(board.full()).toEqual(false);
+    });
+  });
 });
