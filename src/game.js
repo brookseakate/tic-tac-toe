@@ -16,7 +16,7 @@ var Game = function() {
 Game.prototype.play = function(playerID, posIndex) {
   var currentPlayer = this.whoseTurn();
 
-  if ((this.board.grid[posIndex[0]][posIndex[1]] === undefined) && (currentPlayer.idNum == playerID)) {
+  if ((this.board.grid[posIndex[0]][posIndex[1]] === undefined) && (currentPlayer.idNum == playerID) && !(this.gameOver)) {
     this.board.grid[posIndex[0]][posIndex[1]] = playerID;
     if ((this.board.won()) || (this.board.full())) {
       this.gameOver = true;

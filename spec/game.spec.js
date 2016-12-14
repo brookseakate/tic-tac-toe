@@ -39,7 +39,6 @@ describe('Game', function() {
     });
     it('should only allow the player whose turn is True to play', function(){
       var game = new Game();
-      //This will break once turn management works
       expect(game.playerOne.myTurn).toEqual(true);
       game.play(0, '00');
       expect(game.play(0, '01')).toEqual(false);
@@ -60,9 +59,22 @@ describe('Game', function() {
       expect(game.board.isWon).toEqual(true);
       expect(game.board.winner).toEqual(0);
     });
+
+    it('should only allow a play if game is not over', function() {
+      var game = new Game();
+      game.play(0, '00');
+      game.play(1, '01');
+      game.play(0, '10');
+      game.play(1, '11');
+      game.play(0, '20');
+      expect(game.gameOver).toEqual(true);
+      expect(game.board.isWon).toEqual(true);
+      expect(game.board.full()).toEqual(false);
+      expect(game.play(1, '12')).toEqual(false);
+      expect(game.board.grid[1][2]).not.toBeDefined();
+    });
   });
 
-// // @TODO - write this!
   describe('gameOver', function(){
     it('should begin at false', function() {
       var game = new Game();
@@ -109,7 +121,7 @@ describe('Game', function() {
       expect(game.board.full()).toEqual(true);
     });
 
-    it('should return false if board is not full & there a no winner', function() {
+    it('should return false if board is not full & there IS a winner', function() {
       var game = new Game();
       game.play(0, '00');
       game.play(1, '01');
@@ -133,16 +145,6 @@ describe('Game', function() {
       expect(game.board.isWon).toEqual(false);
       expect(game.board.full()).toEqual(false);
     });
-
-    // it('will clear the board once someone has won', function(){
-    //   var game = new Game();
-    //   game.play(0, '00');
-    //   game.play(1, '11');
-    //   game.play(0, '01');
-    //   game.play(1, '12');
-    //   game.play(0, '02');
-    //   // expect(game.board.grid[0][0]).to
-    // });
   });
 
   describe('updateTurn', function(){
