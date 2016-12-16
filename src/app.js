@@ -1,4 +1,4 @@
-import ApplicationView from 'app/views/application';
+import ApplicationView from 'app/views/application_view';
 
 $(document).ready(function (){
   var appView = new ApplicationView({
