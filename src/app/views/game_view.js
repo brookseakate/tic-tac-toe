@@ -8,6 +8,18 @@ const GameView = Backbone.View.extend({
 
   },
 
+  events: {
+    'click .btn-savepl1': 'savePlayer',
+    'click .btn-savepl2': 'savePlayer',
+  },
+
+  savePlayer: function(){
+    var name = {
+      // We still need to complete this
+      // name: this.$()
+    }
+  },
+
   render: function(){
     const boardView = new BoardView({
       model: this.model.board,
