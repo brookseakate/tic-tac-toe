@@ -5,10 +5,10 @@ import CellView from 'app/views/cell_view';
 import $ from 'jquery';
 const BoardView = Backbone.View.extend({
   initialize: function(){
-
+    console.log("Hello!");
   },
   render: function(){
-    var build = $();
+    var build = this.$el;
     this.model.grid.forEach(function(arr){
       var row =  $('<tr> </tr>');
       arr.forEach(function(val){
@@ -18,6 +18,8 @@ const BoardView = Backbone.View.extend({
     });
     this.$el.append(build);
   }
+
+
 });
 
 export default BoardView;

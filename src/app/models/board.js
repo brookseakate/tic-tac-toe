@@ -4,7 +4,7 @@ import Backbone from 'backbone';
 
 const Board = Backbone.Model.extend({
   initialize: function(){
-    this.grid = [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]];
+    this.grid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
   }
 });
 
