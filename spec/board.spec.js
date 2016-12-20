@@ -8,7 +8,6 @@ describe('Board', function(){
   });
   describe('won', function(){
     it('will return false if no one has played', function(){
-
       expect(board.won()).toEqual(false);
     });
     it('will return false if there is a tie', function(){
