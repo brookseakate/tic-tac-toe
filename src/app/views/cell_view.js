@@ -3,6 +3,7 @@
 //This view will update a single cell
 
 import Backbone from 'backbone';
+import Game from 'app/models/game';
 
 // import $ from 'jquery';
 const CellView = Backbone.View.extend( {
@@ -21,6 +22,7 @@ const CellView = Backbone.View.extend( {
   },
 
   cellClick: function(event) {
+  
     console.log("Click on cell " + this.val);
     this.trigger('select', this.val);
   }

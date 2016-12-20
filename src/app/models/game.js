@@ -13,16 +13,12 @@ var Game = Backbone.Model.extend({
   },
   play: function(playerID, posIndex) {
     var currentPlayer = this.whoseTurn();
-    // console.log("This game over>>>>" + this.gameOver);
-    // console.log("This Current Player ID >>> " + currentPlayer.idNum);
-    //   console.log("This  Player ID >>> " + playerID);
-    //   console.log("Please be undefined >>>" + this.board.get('grid')[posIndex[0]][posIndex[1]]);
     if ((this.board.get('grid')[posIndex[0]][posIndex[1]] === undefined) && (currentPlayer.idNum === playerID) && !(this.gameOver)) {
-      // console.log(" I made it here 1");
+
       var position = this.board.get('grid');
       position[posIndex[0]][posIndex[1]] = playerID;
       this.board.set('grid', position);
-      // console.log(" I made it here 2");
+    
       if ((this.board.won()) || (this.board.full())) {
         this.gameOver = true;
       }

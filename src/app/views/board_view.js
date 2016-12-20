@@ -2,6 +2,7 @@
 //The id for the board is "board" on the table in the html
 import Backbone from 'backbone';
 import CellView from 'app/views/cell_view';
+import Board from 'app/models/board';
 import $ from 'jquery';
 const BoardView = Backbone.View.extend({
   initialize: function(){
@@ -11,8 +12,9 @@ const BoardView = Backbone.View.extend({
   render: function(){
     var build = this.$el;
 
-    this.model.grid.forEach(function(arr){
+    this.model.get('grid').forEach(function(arr){
       var row =  $('<tr> </tr>');
+
       arr.forEach(function(val){
         var element = $('<td></td>');
         var cell = new CellView({

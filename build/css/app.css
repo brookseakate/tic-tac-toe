@@ -1,0 +1,19 @@
+td  {
+  background-color: blue;
+  width: 20vw;
+  height: 20vh;
+  border: 1vw solid white;
+  box-sizing: border-box;
+
+}
+
+
+body {
+  margin: 25px;
+}
+#board {
+  margin: 10px;
+}
+header {
+  text-align:  center;
+}
