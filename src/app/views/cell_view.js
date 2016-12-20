@@ -13,6 +13,7 @@ const CellView = Backbone.View.extend( {
 
   render: function() {
     this.$el.append(this.val);
+    console.log("Cell View Render val: " + this.val);
 
     return this;
   },
@@ -22,7 +23,7 @@ const CellView = Backbone.View.extend( {
   },
 
   cellClick: function(event) {
-  
+
     console.log("Click on cell " + this.val);
     this.trigger('select', this.val);
   }

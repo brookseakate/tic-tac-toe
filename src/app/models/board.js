@@ -9,7 +9,8 @@ var Board = Backbone.Model.extend({
     isWon:  false
   },
   initialize: function(options){
-    this.set('grid', [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]]);
+    // this.set('grid', [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]]); // @TODO - uncomment
+    this.set('grid', [[0, 1, 2], [3, 4, 5], [6, 7, 8]]); // NOTE: for display testing
   },
   won: function(){
     var grid = this.get('grid');

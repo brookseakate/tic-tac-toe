@@ -4,7 +4,10 @@ td  {
   height: 20vh;
   border: 1vw solid white;
   box-sizing: border-box;
-
+  color: white;
+  text-align: center;
+  font-size: 5em;
+  /*font-weight: bold;*/
 }
 
 
