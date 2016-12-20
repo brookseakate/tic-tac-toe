@@ -13,12 +13,12 @@ describe('Game', function() {
       game.play(0, '01');
       expect(game.board.get('grid')[0][1]).toEqual(0);
       expect(game.board.get('grid')[0][1]).not.toEqual(beginValue);
-      expect(game.board.get('grid')[0][1]).toBeDefined();
+      expect(game.board.get('grid')[0][1]).not.toEqual("");
 
       game.play(1, '20');
 
       expect(game.board.get('grid')[2][0]).toEqual(1);
-      expect(game.board.get('grid')[2][0]).toBeDefined();
+      expect(game.board.get('grid')[2][0]).not.toEqual("");
     });
 
     it('should not reassign a space that has already been played', function() {
@@ -30,7 +30,7 @@ describe('Game', function() {
 
       expect(game.board.get('grid')[0][2]).toEqual(0);
       expect(game.board.get('grid')[0][2]).not.toEqual(beginValue);
-      expect(game.board.get('grid')[0][2]).toBeDefined();
+      expect(game.board.get('grid')[0][2]).not.toEqual("");
 
       expect(game.play(1, '02')).toEqual(false);
 
@@ -44,7 +44,7 @@ describe('Game', function() {
       game.play(0, '00');
       expect(game.play(0, '01')).toEqual(false);
       expect(game.playerOne.myTurn).toEqual(false);
-      expect(game.board.get('grid')[0][1]).not.toBeDefined();
+      expect(game.board.get('grid')[0][1]).toEqual("");
     });
 
     it('it should be able to check if someone has already won', function(){
@@ -53,7 +53,7 @@ describe('Game', function() {
       game.play(0, '01');
       game.play(1, '12');
       game.play(0, '02');
-      expect(game.board.get('grid')[0][2]).toBeDefined();
+      expect(game.board.get('grid')[0][2]).not.toEqual("");
       expect(game.board.get('grid')[0][1]).toEqual(0);
       expect(game.board.get('grid')[0][0]).toEqual(0);
       expect(game.board.get('isWon')).toEqual(true);
@@ -70,7 +70,7 @@ describe('Game', function() {
       expect(game.board.get('isWon')).toEqual(true);
       expect(game.board.full()).toEqual(false);
       expect(game.play(1, '12')).toEqual(false);
-      expect(game.board.get('grid')[1][2]).not.toBeDefined();
+      expect(game.board.get('grid')[1][2]).toEqual("");
     });
     it('will allow a player to play a valid space after trying an invalid space', function(){
       var game = new Game();
@@ -78,7 +78,7 @@ describe('Game', function() {
       expect(game.play(1, '00')).toEqual(false);
       expect(game.board.get('grid')[0][0]).not.toEqual(1);
       expect(game.play(1, '01')).toEqual(true);
-      expect(game.board.get('grid')[0][1]).toBeDefined();
+      expect(game.board.get('grid')[0][1]).not.toEqual("");
       expect(game.board.get('grid')[0][1]).toEqual(1);
     });
   });
