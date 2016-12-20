@@ -17,7 +17,7 @@ const GameView = Backbone.View.extend({
     var name = {
       // We still need to complete this
       // name: this.$()
-    }
+    };
   },
 
   render: function(){
