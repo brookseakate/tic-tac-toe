@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 const GameView = Backbone.View.extend({
   initialize: function(){
-
+    this.listenTo(this.model, 'change', this.render); // this might be for the API integration stuff?!
   },
 
   events: {
@@ -25,8 +25,13 @@ const GameView = Backbone.View.extend({
       model: this.model.board,
       el: this.$('#board')
     });
+    this.listenTo(boardView, 'cellPlayed', this.playValue);
     boardView.render();
     return this;
+  },
+
+  playValue: function(arr) {
+    this.model.play((this.model.whoseTurn().idNum), arr[1]);
   }
 });
 // Feeling okay about this basic view may need to add more

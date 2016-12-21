@@ -12,18 +12,18 @@ const BoardView = Backbone.View.extend({
   render: function(){
     var build = this.$el;
 
-    this.model.get('grid').forEach(function(arr){
-      var row =  $('<tr> </tr>');
+    this.model.get('grid').forEach(function(arr, indexOne){
+      var row = $('<tr></tr>');
 
-      arr.forEach(function(val){
+      arr.forEach(function(val, indexTwo){
         var element = $('<td></td>');
         var cell = new CellView({
+          index: indexOne.toString() + indexTwo.toString(),
           value: val,
           el: element
         });
 
         console.log("forEach this: " + this);
-
         console.log("forEach cell value: " + cell.val);
 
         this.listenTo(cell, 'select', this.cellSelect);
@@ -39,13 +39,14 @@ const BoardView = Backbone.View.extend({
     this.$el.append(build);
   },
 
-  cellSelect: function(val) {
+  cellSelect: function(val_position_array) {
     // this.val = val;
     console.log("BoardView! cellSelect");
-    console.log("BoardView! Selected cell " + val);
+    console.log("BoardView! Selected cell info:" + val_position_array);
+    this.trigger('cellPlayed', val_position_array);
+    this.$el.empty();
+    this.render();
   }
-
-
 });
 
 export default BoardView;

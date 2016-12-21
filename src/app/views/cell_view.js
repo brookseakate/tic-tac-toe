@@ -9,11 +9,13 @@ import Game from 'app/models/game';
 const CellView = Backbone.View.extend( {
   initialize: function(options) {
     this.val = options.value;
+    this.position = options.index;
   },
 
   render: function() {
     this.$el.append(this.val);
     console.log("Cell View Render val: " + this.val);
+    console.log("Cell View Render index: " + this.index);
 
     return this;
   },
@@ -24,8 +26,9 @@ const CellView = Backbone.View.extend( {
 
   cellClick: function(event) {
 
-    console.log("Click on cell " + this.val);
-    this.trigger('select', this.val);
+    console.log("Click on cell index: " + this.index);
+    console.log("Value of clicked on cell: " + this.val);
+    this.trigger('select', [this.val, this.position]);
   }
 });
 
