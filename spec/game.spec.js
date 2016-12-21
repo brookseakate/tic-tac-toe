@@ -113,8 +113,8 @@ describe('Game', function() {
       game.play(1, '11');
       game.play(0, '10');
       game.play(1, '12');
-      game.play(0, '22');
-      game.play(1, '21');
+      game.play(0, '21');
+      game.play(1, '22');
       expect(game.gameOver).toEqual(false);
       expect(game.board.get('isWon')).toEqual(false);
       expect(game.board.full()).toEqual(false);
