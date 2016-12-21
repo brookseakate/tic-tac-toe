@@ -1,8 +1,8 @@
 
-var Player = function(idNum){
+var Player = function(idNum, symbol){
   this.myTurn = false;
   this.idNum = idNum;
-  this.symbol = "";
+  this.symbol = symbol;
   this.userName = "";
 };
 

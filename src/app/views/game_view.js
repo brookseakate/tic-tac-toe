@@ -31,7 +31,10 @@ const GameView = Backbone.View.extend({
   },
 
   playValue: function(arr) {
-    this.model.play((this.model.whoseTurn().idNum), arr[1]);
+    var thisPlayerID = this.model.whoseTurn().idNum;
+    this.model.play(thisPlayerID, arr[1]);
+    // var thisPlayerSymbol = this.model.whoseTurn().symbol;
+    // this.model.play(thisPlayerID, thisPlayerSymbol, arr[1]);
   }
 });
 // Feeling okay about this basic view may need to add more

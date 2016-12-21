@@ -5,9 +5,9 @@ import Player from 'player';
 var Game = Backbone.Model.extend({
   initialize: function(){
     this.board = new Board();
-    this.playerOne = new Player(0);
+    this.playerOne = new Player(0, "X");
     this.playerOne.myTurn = true;
-    this.playerTwo = new Player(1);
+    this.playerTwo = new Player(1, "O");
     this.gameOver = false;
     this.winner = this.board.get('winner');
   },
