@@ -29,6 +29,7 @@ const GameView = Backbone.View.extend({
   events: {
     'click .btn-savepl1': 'savePlayer',
     'click .btn-savepl2': 'savePlayer',
+    'click .btn-new-game': 'startNewGame'
   },
 
   savePlayer: function() {
@@ -59,8 +60,12 @@ const GameView = Backbone.View.extend({
 
     this.modalElement.html(this.modalTemplate({outcomeMessage: message}));
     this.modalElement.show();
+  },
+
+  startNewGame: function() {
+    // @TODO - replace with something other than just reloading the page...
+    window.location.reload(false);
   }
 });
-// Feeling okay about this basic view may need to add more
-//May need to import
+
 export default GameView;
