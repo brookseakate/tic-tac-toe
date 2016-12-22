@@ -3,6 +3,7 @@ import Board from 'app/models/board';
 import Player from 'player';
 
 var Game = Backbone.Model.extend({
+
   initialize: function(){
     this.board = new Board();
     this.playerOne = new Player(0, "X");
@@ -11,6 +12,7 @@ var Game = Backbone.Model.extend({
     this.gameOver = false;
     this.winner = this.board.get('winner');
   },
+
   play: function(playerID, posIndex) {
     var currentPlayer = this.whoseTurn();
     if ((this.board.get('grid')[posIndex[0]][posIndex[1]] === "") && (currentPlayer.idNum === playerID) && !(this.gameOver)) {
@@ -30,12 +32,14 @@ var Game = Backbone.Model.extend({
       return false;
     }
   },
+
   updateTurn: function(){
     this.playerOne.myTurn = !this.playerOne.myTurn;
     this.playerTwo.myTurn = !this.playerTwo.myTurn;
   },
+
   whoseTurn: function (){
-    if(this.playerOne.myTurn === true){
+    if (this.playerOne.myTurn === true){
       return this.playerOne;
     }
     else {

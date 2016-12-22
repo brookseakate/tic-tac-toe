@@ -6,6 +6,20 @@ import $ from 'jquery';
 const GameView = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.model, 'change', this.render); // this might be for the API integration stuff?!
+
+    // this.listenTo()
+  },
+
+  render: function(){
+    const boardView = new BoardView({
+      model: this.model.board,
+      el: this.$('#board')
+    });
+    this.listenTo(boardView, 'cellPlayed', this.playValue);
+    this.listenTo(this.model.board, 'boardWin', this.showOutcomeModal);
+    // this.delegateEvents();
+    boardView.render();
+    return this;
   },
 
   events: {
@@ -20,21 +34,15 @@ const GameView = Backbone.View.extend({
     };
   },
 
-  render: function(){
-    const boardView = new BoardView({
-      model: this.model.board,
-      el: this.$('#board')
-    });
-    this.listenTo(boardView, 'cellPlayed', this.playValue);
-    boardView.render();
-    return this;
-  },
-
   playValue: function(arr) {
     var thisPlayerID = this.model.whoseTurn().idNum;
     this.model.play(thisPlayerID, arr[1]);
     // var thisPlayerSymbol = this.model.whoseTurn().symbol;
     // this.model.play(thisPlayerID, thisPlayerSymbol, arr[1]);
+  },
+
+  showOutcomeModal: function(winner) {
+    console.log(">>>>>>>>SHOW OUTCOME MODAL! Winner: " + winner);
   }
 });
 // Feeling okay about this basic view may need to add more

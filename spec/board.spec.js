@@ -15,15 +15,18 @@ describe('Board', function(){
       expect(board.won()).toEqual(false);
     });
     it('will return true if a row  is the same', function(){
-      board.set('grid', [[1, 1, 1,], [0, 0, ""], ["", "", ""]]);
+      board.set('grid', [[1, 1, "",], [0, 0, 0], ["", "", ""]]);
       expect(board.won()).toEqual(true);
     });
     it('will return true if a diagonal is the same', function(){
       board.set('grid', [["", "", 0], ["", 0, 1], [0, 1, 0]]);
       expect(board.won()).toEqual(true);
+      // console.log("*************BOARD WINNER: " + board.get('winner'));
+      expect(board.get('winner')).toEqual(0);
+      // console.log("*************BOARD isWon: " + board.get('isWon'));
     });
     it('will return true if a column is the same', function(){
-      board.set('grid',[[1, "", 0], [1, 0, 1], [1, 1, 0]]);
+      board.set('grid',[["", "", 0], [1, 0, 0], [1, 1, 0]]);
       expect(board.won()).toEqual(true);
     });
     it('will return false if there is a tie', function(){

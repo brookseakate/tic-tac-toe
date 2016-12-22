@@ -14,8 +14,8 @@ const CellView = Backbone.View.extend( {
 
   render: function() {
     this.$el.append(this.val);
-    console.log("Cell View Render val: " + this.val);
-    console.log("Cell View Render index: " + this.index);
+    // console.log("Cell View Render val: " + this.val); // NOTE: log
+    // console.log("Cell View Render index: " + this.index); // NOTE: log
 
     return this;
   },
