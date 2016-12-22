@@ -23,10 +23,12 @@ var Game = Backbone.Model.extend({
 
       if ((this.board.won()) || (this.board.full())) {
         this.gameOver = true;
+        // this.trigger('gameOver', this.winner);
+        this.trigger('gameOver');
       }
-      // console.log(" I made it here 3");
+      // console.log(" I made it here 3"); // @TODO - remove log
       this.updateTurn();
-      // console.log(" I made it here 4");
+      // console.log(" I made it here 4"); // @TODO - remove log
       return true;
     } else {
       return false;

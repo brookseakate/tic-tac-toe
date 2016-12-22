@@ -59,7 +59,7 @@ var Board = Backbone.Model.extend({
   boardWin: function(whoWon) {
     this.set('winner', whoWon);
     this.set('isWon', true);
-    this.trigger('boardWin', whoWon);
+    // this.trigger('boardWin');
   },
 });
 

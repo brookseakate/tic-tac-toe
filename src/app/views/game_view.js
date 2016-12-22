@@ -2,13 +2,12 @@
 import Backbone from 'backbone';
 import BoardView from 'app/views/board_view';
 import $ from 'jquery';
+import _ from 'underscore';
 
 const GameView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, 'change', this.render); // this might be for the API integration stuff?!
-
-    // this.listenTo()
-  },
+    },
 
   render: function() {
     const boardView = new BoardView({
@@ -16,7 +15,12 @@ const GameView = Backbone.View.extend({
       el: this.$('#board')
     });
     this.listenTo(boardView, 'cellPlayed', this.playValue);
-    this.listenTo(this.model.board, 'boardWin', this.showOutcomeModal);
+    this.listenTo(this.model, 'gameOver', this.showOutcomeModal);
+
+    this.modalTemplate = _.template($('#tmpl-winner-modal').html());
+    this.modalElement = this.$('#winner-modal');
+
+    this.modalElement.hide();
     // this.delegateEvents();
     boardView.render();
     return this;
@@ -41,8 +45,20 @@ const GameView = Backbone.View.extend({
     // this.model.play(thisPlayerID, thisPlayerSymbol, arr[1]);
   },
 
-  showOutcomeModal: function(winner) {
+  showOutcomeModal: function() {
+    var winner = this.model.board.get('winner');
     console.log(">>>>>>>>SHOW OUTCOME MODAL! Winner: " + winner);
+    this.modalElement.empty();
+
+    var message;
+    if (winner !== "") {
+      message = "Player " + winner + " wins!";
+    } else {
+      message = "It's a draw!";
+    }
+
+    this.modalElement.html(this.modalTemplate({outcomeMessage: message}));
+    this.modalElement.show();
   }
 });
 // Feeling okay about this basic view may need to add more
