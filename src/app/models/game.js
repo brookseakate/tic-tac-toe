@@ -4,7 +4,7 @@ import Player from 'player';
 
 var Game = Backbone.Model.extend({
 
-  initialize: function(){
+  initialize: function() {
     this.board = new Board();
     this.playerOne = new Player(0, "X");
     this.playerOne.myTurn = true;
@@ -33,12 +33,12 @@ var Game = Backbone.Model.extend({
     }
   },
 
-  updateTurn: function(){
+  updateTurn: function() {
     this.playerOne.myTurn = !this.playerOne.myTurn;
     this.playerTwo.myTurn = !this.playerTwo.myTurn;
   },
 
-  whoseTurn: function (){
+  whoseTurn: function () {
     if (this.playerOne.myTurn === true){
       return this.playerOne;
     }

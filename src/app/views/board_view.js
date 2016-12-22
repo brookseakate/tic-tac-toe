@@ -6,11 +6,11 @@ import Board from 'app/models/board';
 import $ from 'jquery';
 const BoardView = Backbone.View.extend({
 
-  initialize: function(){
+  initialize: function() {
     console.log("Hello!");
   },
 
-  render: function(){
+  render: function() {
     var build = this.$el;
 
     this.model.get('grid').forEach(function(arr, indexOne){
@@ -28,9 +28,7 @@ const BoardView = Backbone.View.extend({
         // console.log("forEach cell value: " + cell.val); // NOTE: log
 
         this.listenTo(cell, 'select', this.cellSelect);
-
         cell.render();
-
         row.append(cell.$el);
       }, this);
 
@@ -45,18 +43,9 @@ const BoardView = Backbone.View.extend({
     console.log("BoardView! cellSelect");
     console.log("BoardView! Selected cell info:" + val_position_array);
     this.trigger('cellPlayed', val_position_array);
-
-    var currentWinner = this.model.get('winner');
-
-    // @TODO - remove
-    // if (currentWinner !== "") {
-    //   this.trigger('boardWin', currentWinner);
-    // }
-
     this.$el.empty();
     this.render();
   }
-
 });
 
 export default BoardView;

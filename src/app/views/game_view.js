@@ -4,13 +4,13 @@ import BoardView from 'app/views/board_view';
 import $ from 'jquery';
 
 const GameView = Backbone.View.extend({
-  initialize: function(){
+  initialize: function() {
     this.listenTo(this.model, 'change', this.render); // this might be for the API integration stuff?!
 
     // this.listenTo()
   },
 
-  render: function(){
+  render: function() {
     const boardView = new BoardView({
       model: this.model.board,
       el: this.$('#board')
@@ -27,7 +27,7 @@ const GameView = Backbone.View.extend({
     'click .btn-savepl2': 'savePlayer',
   },
 
-  savePlayer: function(){
+  savePlayer: function() {
     var name = {
       // We still need to complete this
       // name: this.$()

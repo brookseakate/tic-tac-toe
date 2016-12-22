@@ -25,7 +25,6 @@ const CellView = Backbone.View.extend( {
   },
 
   cellClick: function(event) {
-
     console.log("Click on cell index: " + this.index);
     console.log("Value of clicked on cell: " + this.val);
     this.trigger('select', [this.val, this.position]);

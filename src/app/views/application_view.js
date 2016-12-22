@@ -5,11 +5,9 @@ import GameView from 'app/views/game_view';
 
 const ApplicationView = Backbone.View.extend({
 
-  initialize: function(){
-    //This was done on the app.js
-  },
+  initialize: function() {},
 
-  render: function(){
+  render: function() {
     const gameView = new GameView ({
       model: this.model.game,
       el: this.$('#game')
