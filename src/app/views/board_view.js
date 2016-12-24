@@ -6,9 +6,7 @@ import Board from 'app/models/board';
 import $ from 'jquery';
 const BoardView = Backbone.View.extend({
 
-  initialize: function() {
-    console.log("Hello!");
-  },
+  initialize: function() {},
 
   render: function() {
     var build = this.$el;

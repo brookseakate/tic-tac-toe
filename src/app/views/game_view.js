@@ -14,8 +14,10 @@ const GameView = Backbone.View.extend({
       model: this.model.board,
       el: this.$('#board')
     });
+
     this.listenTo(boardView, 'cellPlayed', this.playValue);
-    this.listenTo(this.model, 'gameOver', this.showOutcomeModal);
+    this.listenTo(this.model, 'gameOver', this.gameOverSequence);
+    // this.listenTo(this.model, 'gameOver', this.saveGame); // @TODO - remove
 
     this.modalTemplate = _.template($('#tmpl-winner-modal').html());
     this.modalElement = this.$('#winner-modal');
@@ -46,7 +48,11 @@ const GameView = Backbone.View.extend({
     // this.model.play(thisPlayerID, thisPlayerSymbol, arr[1]);
   },
 
-  showOutcomeModal: function() {
+  gameOverSequence: function() {
+    // save game
+    this.trigger('logGame', this.model);
+
+    // show Outcome Modal
     var winner = this.model.board.get('winner');
     console.log(">>>>>>>>SHOW OUTCOME MODAL! Winner: " + winner);
     this.modalElement.empty();
@@ -63,9 +69,13 @@ const GameView = Backbone.View.extend({
   },
 
   startNewGame: function() {
-    // @TODO - replace with something other than just reloading the page...
+    // @TODO - replace with something other than just reloading the page?...
     window.location.reload(false);
-  }
+  },
+
+  // @TODO - remove
+  // saveGame: function() {
+  // }
 });
 
 export default GameView;

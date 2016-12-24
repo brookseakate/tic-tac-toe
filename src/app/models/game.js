@@ -5,6 +5,7 @@ import Player from 'player';
 var Game = Backbone.Model.extend({
 
   initialize: function() {
+    console.log("----- Made a new game, +1!!!! -----");
     this.board = new Board();
     this.playerOne = new Player(0, "X");
     this.playerOne.myTurn = true;
