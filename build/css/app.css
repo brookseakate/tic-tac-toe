@@ -1,8 +1,13 @@
-td  {
-  background-color: blue;
-  width: 20vw;
+table {
+  width: 60vw;
+  margin: auto;
+}
+
+td {
+  background-color: #407aa3;
+  width: 26vh;
   height: 20vh;
-  border: 1vw solid white;
+  border: 2vh solid white;
   box-sizing: border-box;
   color: white;
   text-align: center;
@@ -11,11 +16,9 @@ td  {
 }
 
 body {
-  margin: 25px;
+  margin: 5vh 20vw;
 }
-#board {
-  margin: 10px;
-}
+
 header {
   text-align:  center;
 }
@@ -23,13 +26,19 @@ header {
 #winner-modal {
   z-index: 10;
   position: fixed;
-  width: 30%;
-  height: 30%;
-  top: 30%;
-  left: 30%;
-  background-color: slategrey;
+  width: 30vw;
+  height: 30vh;
+  top: 30vh;
+  left: 35vw;
+  radius: 25px;
+  background-color: #7a6ca2;
   text-align: center;
-  border: 1em solid white;
-  /*margin-left: 20%;*/
-  /*border-radius: 20%;*/
+  color: white;
+  border: .75em solid white;
+  border-radius: 10px;
+}
+
+.btn-new-game {
+  border: 5px solid white;
+  border-radius: 5px;
 }

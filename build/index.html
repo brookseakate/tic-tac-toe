@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Tic-Tac-Toe</title>
+  <title>Binary Tic Tac Toe</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+  <header>
+    <h1>Binary Tic Tac Toe</h1>
+  </header>
   <div id="application">
-    <header>
-      <h1>Tic-Tac-Toe</h1>
-    </header>
     <main>
       <section id="game">
         <!-- We need to make a larger div to cover players -->
-        <div id="playerOne">
+        <!-- <div id="playerOne">
           <label>
             Player One
             <input type="text" name="name">
@@ -27,7 +27,7 @@
             <input type="text" name="name">
             <h3 class="button btn-savep2">Save</h3>
           </label>
-        </div>
+        </div> -->
         <table id="board">
         </table>
         <section id="winner-modal"></section>
@@ -40,7 +40,7 @@
   <!-- Underscore Templates -->
   <script type="text/template" id="tmpl-winner-modal">
     <h1><%- outcomeMessage %></h1>
-    <h3 class="button btn-new-game">Play Again</h3>
+    <h3 class="button btn-new-game secondary">Play Again</h3>
   </script>
 
   <script type="text/template" id="tmpl-game-record">
